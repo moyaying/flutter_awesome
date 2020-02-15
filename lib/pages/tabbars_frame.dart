@@ -35,7 +35,7 @@ class _TabBarsFrameState extends State<TabBarsFrame> {
         currentIndex: _currentTabIndex,
         items: [
           BottomNavigationBarItem(title: Text(S.of(context).todos), icon: Icon(Icons.home)),
-          BottomNavigationBarItem(title: Text('我的'), icon: Icon(Icons.person)),
+          BottomNavigationBarItem(title: Text(S.of(context).mine), icon: Icon(Icons.person)),
         ],
       ),
       body: _getTabView(_currentTabIndex),

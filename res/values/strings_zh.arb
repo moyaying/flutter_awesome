@@ -1,4 +1,19 @@
 {
   "page_not_found": "页面不存在",
-  "todos": "任务"
+  "todos": "任务",
+  "mainland_china": "中国大陆",
+  "other_area": "其他地区",
+  "area": "地区",
+  "person_setting": "使用设置",
+  "language": "语言",
+  "what_region_use_app": "在什么地区使用APP",
+  "enter_app": "进入APP",
+  "mine": "我的",
+  "tasks_list": "任务列表",
+  "show_all": "全部显示",
+  "show_active": "显示未完成的",
+  "show_completed": "显示已完成的",
+  "mark_all_complete": "标记全部完成",
+  "mark_all_active": "标记全部未完成",
+  "delete_all_completed": "删除已完成的任务"
 }

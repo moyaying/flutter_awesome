@@ -3,6 +3,7 @@
 // in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_awesome_app/generated/i18n.dart';
 import 'package:flutter_awesome_app/pages/todos/bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,21 +37,21 @@ class FilterButton extends StatelessWidget {
       PopupMenuItem<VisibilityFilter>(
         value: VisibilityFilter.all,
         child: Text(
-          '全部显示',
+          S.of(context).show_all,
           style: all ? activeStyle : defaultStyle,
         ),
       ),
       PopupMenuItem<VisibilityFilter>(
         value: VisibilityFilter.active,
         child: Text(
-          '显示未完成的',
+          S.of(context).show_active,
           style: active ? activeStyle : defaultStyle,
         ),
       ),
       PopupMenuItem<VisibilityFilter>(
         value: VisibilityFilter.completed,
         child: Text(
-          '显示已完成的',
+          S.of(context).show_completed,
           style: completed ? activeStyle : defaultStyle,
         ),
       ),

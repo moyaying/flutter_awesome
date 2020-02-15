@@ -21,8 +21,23 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  String get area => "Area";
+  String get delete_all_completed => "delete all completed";
+  String get enter_app => "Enter APP";
+  String get language => "Language";
+  String get mainland_china => "China mainland";
+  String get mark_all_active => "mark all active";
+  String get mark_all_complete => "mark all complete";
+  String get mine => "Mine";
+  String get other_area => "Other area";
   String get page_not_found => "page not found";
+  String get person_setting => "App Setting";
+  String get show_active => "show active";
+  String get show_all => "show all";
+  String get show_completed => "show completed";
+  String get tasks_list => "tasks";
   String get todos => "TODOS";
+  String get what_region_use_app => "What region use app";
 }
 
 class $en extends S {
@@ -36,7 +51,37 @@ class $zh extends S {
   TextDirection get textDirection => TextDirection.ltr;
 
   @override
+  String get area => "地区";
+  @override
+  String get mine => "我的";
+  @override
+  String get show_active => "显示未完成的";
+  @override
+  String get other_area => "其他地区";
+  @override
+  String get person_setting => "使用设置";
+  @override
+  String get mark_all_active => "标记全部未完成";
+  @override
+  String get language => "语言";
+  @override
   String get page_not_found => "页面不存在";
+  @override
+  String get mainland_china => "中国大陆";
+  @override
+  String get show_all => "全部显示";
+  @override
+  String get what_region_use_app => "在什么地区使用APP";
+  @override
+  String get tasks_list => "任务列表";
+  @override
+  String get delete_all_completed => "删除已完成的任务";
+  @override
+  String get mark_all_complete => "标记全部完成";
+  @override
+  String get enter_app => "进入APP";
+  @override
+  String get show_completed => "显示已完成的";
   @override
   String get todos => "任务";
 }

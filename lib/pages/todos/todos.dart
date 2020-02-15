@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_awesome_app/components/todos/bloc/bloc.dart';
 import 'package:flutter_awesome_app/components/todos/todos_component.dart';
 import 'package:flutter_awesome_app/config/application.dart';
+import 'package:flutter_awesome_app/generated/i18n.dart';
 import 'package:flutter_awesome_app/pages/todos/bloc/bloc.dart';
 import 'package:flutter_awesome_app/pages/todos/widget/todo_list.dart';
 import 'package:flutter_awesome_app/routes/routes.dart';
@@ -46,7 +47,7 @@ class _TodosPageState extends State<TodosPage> {
 
       return Scaffold(
         appBar: AppBar(
-          title: Text('任务列表'),
+          title: Text(S.of(context).tasks_list),
           actions: [
             FilterButton(
                 all: activeFilter == VisibilityFilter.all,

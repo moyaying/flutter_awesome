@@ -1,4 +1,19 @@
 {
   "page_not_found": "page not found",
-  "todos": "TODOS"
+  "todos": "TODOS",
+  "mainland_china": "China mainland",
+  "other_area": "Other area",
+  "area": "Area",
+  "person_setting": "App Setting",
+  "language": "Language",
+  "what_region_use_app": "What region use app",
+  "enter_app": "Enter APP",
+  "mine": "Mine",
+  "tasks_list": "tasks",
+  "show_all": "show all",
+  "show_active": "show active",
+  "show_completed": "show completed",
+  "mark_all_complete": "mark all complete",
+  "mark_all_active": "mark all active",
+  "delete_all_completed": "delete all completed"
 }

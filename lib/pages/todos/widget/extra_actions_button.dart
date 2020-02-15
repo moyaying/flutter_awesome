@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_app/components/todos/bloc/bloc.dart';
+import 'package:flutter_awesome_app/generated/i18n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../model.dart';
@@ -34,11 +35,11 @@ class ExtraActionsButton extends StatelessWidget {
       itemBuilder: (BuildContext context) => <PopupMenuItem<ExtraAction>>[
         PopupMenuItem<ExtraAction>(
           value: ExtraAction.toggleAllComplete,
-          child: Text(allCompleted != true ? '标记全部完成' : '标记全部未完成'),
+          child: Text(allCompleted != true ? S.of(context).mark_all_complete : S.of(context).mark_all_active),
         ),
         PopupMenuItem<ExtraAction>(
           value: ExtraAction.clearCompleted,
-          child: Text('删除已完成的任务'),
+          child: Text(S.of(context).delete_all_completed),
         ),
       ],
     );
