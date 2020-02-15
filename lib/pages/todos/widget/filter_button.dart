@@ -3,15 +3,17 @@
 // in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_awesome_app/pages/todos/bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../model.dart';
 
 class FilterButton extends StatelessWidget {
-  final bool activeAll;
-  final bool activeUnCompleted;
-  final bool activeCompleted;
+  final bool all;
+  final bool active;
+  final bool completed;
 
-  FilterButton({Key key, this.activeAll, this.activeCompleted, this.activeUnCompleted}) : super(key: key);
+  FilterButton({Key key, this.all, this.completed, this.active}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class FilterButton extends StatelessWidget {
     return PopupMenuButton<VisibilityFilter>(
       tooltip: '过滤任务',
       onSelected: (filter) {
-        print('xxx TODO filter todos');
+        BlocProvider.of<TodosPageBloc>(context).add(UpdateFilterPageEvent(filter));
       },
       itemBuilder: (BuildContext context) => _items(context),
       icon: Icon(Icons.filter_list),
@@ -35,21 +37,21 @@ class FilterButton extends StatelessWidget {
         value: VisibilityFilter.all,
         child: Text(
           '全部显示',
-          style: activeAll ? activeStyle : defaultStyle,
+          style: all ? activeStyle : defaultStyle,
         ),
       ),
       PopupMenuItem<VisibilityFilter>(
         value: VisibilityFilter.active,
         child: Text(
           '显示未完成的',
-          style: activeUnCompleted ? activeStyle : defaultStyle,
+          style: active ? activeStyle : defaultStyle,
         ),
       ),
       PopupMenuItem<VisibilityFilter>(
         value: VisibilityFilter.completed,
         child: Text(
           '显示已完成的',
-          style: activeCompleted ? activeStyle : defaultStyle,
+          style: completed ? activeStyle : defaultStyle,
         ),
       ),
     ];

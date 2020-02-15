@@ -59,7 +59,6 @@ class _TodosManagerState extends State<_TodosManager> {
         ),
         child: BlocBuilder<TodosBloc, TodosState>(
           builder: (BuildContext context, TodosState state) {
-            print('xxx state $state');
             if (state is TodosListAwareState) {
               _todos = state.todos;
             }
@@ -88,6 +87,15 @@ class TodosInheritedModel extends InheritedModel<TodosAspect> {
 
   static TodosInheritedModel of(BuildContext context, {String aspect}) {
     return InheritedModel.inheritFrom<TodosInheritedModel>(context, aspect: aspect);
+  }
+
+  TodoEntity getTodoById(String id) {
+    for (var todo in todos) {
+      if (todo.id == id) {
+        return todo;
+      }
+    }
+    return null;
   }
 
   @override

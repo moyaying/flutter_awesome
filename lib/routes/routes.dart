@@ -8,6 +8,9 @@ import 'route_handlers.dart';
 class Routes {
   static const String root = "/";
 
+  static const String todo_detail = '/todo/detail';
+  static const String add_edit_todo = '/todo/add_edit';
+
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       print("ROUTE WAS NOT FOUND !!!");
@@ -15,6 +18,8 @@ class Routes {
     });
 
     router.define(root, handler: rootHandler, transitionType: TransitionType.fadeIn);
+    router.define(todo_detail, handler: todoDetailHandler, transitionType: TransitionType.inFromRight);
+    router.define(add_edit_todo, handler: addEditTodoHandler, transitionType: TransitionType.inFromRight);
   }
 }
 

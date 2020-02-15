@@ -24,6 +24,9 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
     if (event is LoadTodosEvent) {
       yield LoadingTodosState();
       try {
+        //模拟加载需要2S时间
+        await Future.delayed(Duration(milliseconds: 2000));
+
         var todos = await _repository.loadTodos();
         if (todos != null && todos.length > 0) {
           _todos = todos;
@@ -78,6 +81,36 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
       } catch (e) {
         print(e);
         yield AddTodoFailState();
+      }
+    } else if (event is UpdateAllTodosEvent) {
+      yield UpdatingAllTodosState(event.isCompleted);
+
+      try {
+        _todos.forEach((todo) => todo.complete = event.isCompleted);
+        await _repository.saveTodos(_todos);
+
+        yield UpdateAllTodosSuccessState(_todos);
+      } catch (e) {
+        print(e);
+        yield UpdateAllTodosFailState();
+      }
+    } else if (event is RemoveCompletedTodosEvent) {
+      yield RemovingCompletedTodosState();
+
+      try {
+        _todos = List<TodoEntity>.unmodifiable(_todos.fold<List<TodoEntity>>(
+          <TodoEntity>[],
+          (prev, entity) {
+            return entity.complete == true ? prev : (prev..add(entity));
+          },
+        ));
+
+        await _repository.saveTodos(_todos);
+
+        yield RemoveCompletedTodosSuccessState(_todos);
+      } catch (e) {
+        print(e);
+        yield RemoveCompletedTodosFailState();
       }
     }
   }

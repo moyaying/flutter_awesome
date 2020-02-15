@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_awesome_app/components/todos/bloc/bloc.dart';
+import 'package:flutter_awesome_app/generated/i18n.dart';
 import 'package:flutter_awesome_app/pages/mine/mine.dart';
+import 'package:flutter_awesome_app/pages/todos/bloc/bloc.dart';
 import 'package:flutter_awesome_app/pages/todos/todos.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TabBarsFrame extends StatefulWidget {
   @override
@@ -30,7 +34,7 @@ class _TabBarsFrameState extends State<TabBarsFrame> {
         },
         currentIndex: _currentTabIndex,
         items: [
-          BottomNavigationBarItem(title: Text('TODOS'), icon: Icon(Icons.home)),
+          BottomNavigationBarItem(title: Text(S.of(context).todos), icon: Icon(Icons.home)),
           BottomNavigationBarItem(title: Text('我的'), icon: Icon(Icons.person)),
         ],
       ),
@@ -42,7 +46,10 @@ class _TabBarsFrameState extends State<TabBarsFrame> {
     return IndexedStack(
       index: currentTabIndex,
       children: <Widget>[
-        TodosPage(),
+        BlocProvider<TodosPageBloc>(
+          create: (context) => TodosPageBloc(todosBloc: BlocProvider.of<TodosBloc>(context)),
+          child: TodosPage(),
+        ),
         MinePage(),
       ],
     );

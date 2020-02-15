@@ -22,6 +22,7 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get page_not_found => "page not found";
+  String get todos => "TODOS";
 }
 
 class $en extends S {
@@ -36,6 +37,8 @@ class $zh extends S {
 
   @override
   String get page_not_found => "页面不存在";
+  @override
+  String get todos => "任务";
 }
 
 class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {

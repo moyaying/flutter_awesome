@@ -79,3 +79,35 @@ class AddTodoFailState extends TodosState {
 
   AddTodoFailState({this.code, this.message});
 }
+
+//update all items
+class UpdatingAllTodosState extends TodosState {
+  final bool completed;
+
+  UpdatingAllTodosState(this.completed);
+}
+
+class UpdateAllTodosSuccessState extends TodosListAwareState {
+  UpdateAllTodosSuccessState(List<TodoEntity> todos) : super(todos);
+}
+
+class UpdateAllTodosFailState extends TodosState {
+  final int code;
+  final String message;
+
+  UpdateAllTodosFailState({this.code, this.message});
+}
+
+//RemoveCompletedTodos
+class RemovingCompletedTodosState extends TodosState {}
+
+class RemoveCompletedTodosSuccessState extends TodosListAwareState {
+  RemoveCompletedTodosSuccessState(List<TodoEntity> todos) : super(todos);
+}
+
+class RemoveCompletedTodosFailState extends TodosState {
+  final int code;
+  final String message;
+
+  RemoveCompletedTodosFailState({this.code, this.message});
+}

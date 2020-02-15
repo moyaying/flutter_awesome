@@ -29,7 +29,7 @@ class TodoItem extends StatelessWidget {
         onTap: onTap,
         leading: Checkbox(
           key: ArchSampleKeys.todoItemCheckbox(todo.id),
-          value: todo.complete,
+          value: todo.complete ?? false,
           onChanged: onCheckboxChanged,
         ),
         title: Text(

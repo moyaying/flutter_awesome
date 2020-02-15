@@ -3,6 +3,8 @@
 // in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_awesome_app/components/todos/bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../model.dart';
 
@@ -19,20 +21,24 @@ class ExtraActionsButton extends StatelessWidget {
     return PopupMenuButton<ExtraAction>(
       onSelected: (action) {
         if (action == ExtraAction.toggleAllComplete) {
-          print('todo xxx all complete');
+          if (allCompleted) {
+            BlocProvider.of<TodosBloc>(context).add(UpdateAllTodosEvent(false));
+          } else {
+            BlocProvider.of<TodosBloc>(context).add(UpdateAllTodosEvent(true));
+          }
         } else if (action == ExtraAction.clearCompleted) {
           /// The View nor the Conttoller need not know what's involved.
-          print('todo xxx clear completed tasks');
+          BlocProvider.of<TodosBloc>(context).add(RemoveCompletedTodosEvent());
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuItem<ExtraAction>>[
         PopupMenuItem<ExtraAction>(
           value: ExtraAction.toggleAllComplete,
-          child: Text(allCompleted == true ? '标记全部完成' : '标记全部没完成'),
+          child: Text(allCompleted != true ? '标记全部完成' : '标记全部未完成'),
         ),
         PopupMenuItem<ExtraAction>(
           value: ExtraAction.clearCompleted,
-          child: Text('清除已完成的任务'),
+          child: Text('删除已完成的任务'),
         ),
       ],
     );

@@ -1,9 +1,25 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_awesome_app/pages/add_edit_todo/add_edit_todo.dart';
 import 'package:flutter_awesome_app/pages/tabbars_frame.dart';
+import 'package:flutter_awesome_app/pages/todo_detail/todo_detail.dart';
 
 var rootHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return TabBarsFrame();
+});
+
+//----------------
+//todos
+//----------------
+
+//detail
+var todoDetailHandler = Handler(handlerFunc: (context, params) {
+  return TodoDetailPage(todoId: params['todoId']?.first);
+});
+
+//add_edit_todo
+var addEditTodoHandler = Handler(handlerFunc: (context, params) {
+  return AddEditTodoPage(todo: params['todo']?.first);
 });
 
 

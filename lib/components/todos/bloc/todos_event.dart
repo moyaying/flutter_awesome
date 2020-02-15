@@ -23,3 +23,11 @@ class AddTodoEvent extends TodosEvent {
 
   AddTodoEvent(this.entity);
 }
+
+class UpdateAllTodosEvent extends TodosEvent {
+  final bool isCompleted;
+
+  UpdateAllTodosEvent(this.isCompleted);
+}
+
+class RemoveCompletedTodosEvent extends TodosEvent {}

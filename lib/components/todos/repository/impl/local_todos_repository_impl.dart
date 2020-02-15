@@ -19,7 +19,7 @@ class LocalTodosRepository implements TodosRepository {
     }
 
     return codec
-        .decode(store.getString(key))['todos']
+        .decode(data)['todos']
         .cast<Map<String, Object>>()
         .map<TodoEntity>((value) => TodoEntity.fromJson(value))
         .toList(growable: false);
