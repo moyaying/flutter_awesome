@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:flutter_awesome_app/generated/i18n.dart';
+import 'package:flutter_awesome_app/generated/l10n.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:equatable/equatable.dart';

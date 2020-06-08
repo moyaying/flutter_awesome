@@ -4,7 +4,7 @@ import 'package:flutter_awesome_app/components/setting/bloc/bloc.dart';
 import 'package:flutter_awesome_app/components/setting/model.dart';
 import 'package:flutter_awesome_app/components/setting/setting_component.dart';
 import 'package:flutter_awesome_app/config/const.dart';
-import 'package:flutter_awesome_app/generated/i18n.dart';
+import 'package:flutter_awesome_app/generated/l10n.dart';
 import 'package:flutter_awesome_app/pages/root_page_control/bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';

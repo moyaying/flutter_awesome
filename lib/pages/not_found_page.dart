@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_awesome_app/generated/i18n.dart';
+import 'package:flutter_awesome_app/generated/l10n.dart';
 
 class NotFoundPage extends StatelessWidget {
   @override

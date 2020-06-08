@@ -9,10 +9,10 @@ import './bloc.dart';
 class TodosPageBloc extends Bloc<TodosPageEvent, TodosPageState> {
   final TodosBloc todosBloc;
 
-  StreamSubscription todosSubscription;
+  StreamSubscription _todosSubscription;
 
   TodosPageBloc({@required this.todosBloc}) {
-    todosSubscription = todosBloc.listen((state) {
+    _todosSubscription = todosBloc.listen((state) {
       if (state is TodosListAwareState) {
         add(UpdateTodosPageEvent());
       }
@@ -70,5 +70,11 @@ class TodosPageBloc extends Bloc<TodosPageEvent, TodosPageState> {
         return todo.complete;
       }
     }).toList();
+  }
+
+  @override
+  Future<void> close() {
+    _todosSubscription.cancel();
+    return super.close();
   }
 }

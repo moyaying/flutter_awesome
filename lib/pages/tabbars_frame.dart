@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_awesome_app/components/todos/bloc/bloc.dart';
-import 'package:flutter_awesome_app/generated/i18n.dart';
+import 'package:flutter_awesome_app/generated/l10n.dart';
 import 'package:flutter_awesome_app/pages/mine/mine.dart';
 import 'package:flutter_awesome_app/pages/todos/bloc/bloc.dart';
 import 'package:flutter_awesome_app/pages/todos/todos.dart';
