@@ -1,41 +1,44 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:rxdart/rxdart.dart';
 import './bloc.dart';
 
 class DemoBloc extends Bloc<DemoEvent, DemoState> {
-  StreamSubscription _subscription;
 
   @override
   DemoState get initialState => InitialDemoState();
 
+//  @override
+//  Stream<DemoState> transformEvents(Stream<DemoEvent> events, Stream<DemoState> Function(DemoEvent) next) {
+////    return super.transformEvents(events, next);
+//    return events
+////        .flatMap((event) {
+////      print('xxx get event: $event');
+////      if (event is CancelledDataState) {
+////        print('xxx 11');
+////        return Stream.value(event).asyncExpand(next);
+////      } else {
+////        print('xxx 22');
+////        return Stream.value(event).switchMap(next);
+////      }
+////    })
+////    .transform(streamTransformer)
+////        .where((event) => event is LoadDataEvent)
+////        .switchMap(next)
+////        .where((event) => event is! LoadDataEvent)
+////        .asyncExpand(next);
+////    .asyncExpand((event) {
+////      return next(event);
+////    });
+////    .flatMap(next);
+////        .concatMap((event)  {
+////          return next
+////    })
+//        .switchMap(next);
+//  }
+
   @override
-  Stream<DemoState> transformEvents(Stream<DemoEvent> events, Stream<DemoState> Function(DemoEvent) next) {
-//    return super.transformEvents(events, next);
-    return events
-//        .flatMap((event) {
-//      print('xxx get event: $event');
-//      if (event is CancelledDataState) {
-//        print('xxx 11');
-//        return Stream.value(event).asyncExpand(next);
-//      } else {
-//        print('xxx 22');
-//        return Stream.value(event).switchMap(next);
-//      }
-//    })
-//    .transform(streamTransformer)
-//        .where((event) => event is LoadDataEvent)
-//        .switchMap(next)
-//        .where((event) => event is! LoadDataEvent)
-//        .asyncExpand(next);
-//    .asyncExpand((event) {
-//      return next(event);
-//    });
-//    .flatMap(next);
-//        .concatMap((event)  {
-//          return next
-//    })
-        .switchMap(next);
+  Stream<Transition<DemoEvent, DemoState>> transformEvents(Stream<DemoEvent> events, transitionFn) {
+    return events.asyncExpand((event) => transitionFn(event));
   }
 
   @override

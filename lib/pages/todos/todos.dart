@@ -26,7 +26,7 @@ class _TodosPageState extends State<TodosPage> {
   void initState() {
     super.initState();
 
-    BlocProvider.of<TodosBloc>(context).add(LoadTodosEvent());
+    context.bloc<TodosBloc>().add(LoadTodosEvent());
   }
 
   @override
@@ -37,8 +37,8 @@ class _TodosPageState extends State<TodosPage> {
 
       var allCompleted = true;
       if (state is FilteredTodosLoadedPageState) {
-        for(var todo in state.todos) {
-          if(todo.complete != true) {
+        for (var todo in state.todos) {
+          if (todo.complete != true) {
             allCompleted = false;
           }
         }

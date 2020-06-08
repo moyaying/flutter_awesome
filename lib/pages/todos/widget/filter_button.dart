@@ -22,7 +22,7 @@ class FilterButton extends StatelessWidget {
     return PopupMenuButton<VisibilityFilter>(
       tooltip: '过滤任务',
       onSelected: (filter) {
-        BlocProvider.of<TodosPageBloc>(context).add(UpdateFilterPageEvent(filter));
+        context.bloc<TodosPageBloc>().add(UpdateFilterPageEvent(filter));
       },
       itemBuilder: (BuildContext context) => _items(context),
       icon: Icon(Icons.filter_list),

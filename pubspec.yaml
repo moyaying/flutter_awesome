@@ -43,15 +43,18 @@ dependencies:
   equatable: ^1.1.0
   fluro: ^1.5.2
   #https://pub.dev/packages/flutter_bloc
-  flutter_bloc: ^3.2.0
+  flutter_bloc: ^4.0.0
   rxdart: ^0.23.1
   key_value_store:
   key_value_store_flutter:
   shared_preferences:
+  mockito: ^4.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  bloc_test: ^5.1.0
 
   build_runner: ^1.7.2
   json_serializable: ^3.2.5

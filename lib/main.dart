@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_app/components/todos/todos_component.dart';
 import 'package:flutter_awesome_app/generated/l10n.dart';
+import 'package:flutter_awesome_app/pages/login/user_repository/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -10,7 +11,12 @@ import 'config/application.dart';
 import 'config/keys.dart';
 import 'routes/routes.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(RepositoryProvider(
+    create: (context) => UserRepository(),
+    child: MyApp(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   MyApp() {

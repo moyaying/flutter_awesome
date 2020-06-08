@@ -54,10 +54,12 @@ class TodosPageBloc extends Bloc<TodosPageEvent, TodosPageState> {
     final visibilityFilter = state is FilteredTodosLoadedPageState
         ? (state as FilteredTodosLoadedPageState).activeFilter
         : VisibilityFilter.all;
-    yield FilteredTodosLoadedPageState(
-      _mapTodosToFilteredTodos((todosBloc.state as TodosListAwareState).todos, visibilityFilter),
-      visibilityFilter,
-    );
+    if (todosBloc.state is TodosListAwareState) {
+      yield FilteredTodosLoadedPageState(
+        _mapTodosToFilteredTodos((todosBloc.state as TodosListAwareState).todos, visibilityFilter),
+        visibilityFilter,
+      );
+    }
   }
 
   List<TodoEntity> _mapTodosToFilteredTodos(List<TodoEntity> todos, VisibilityFilter filter) {

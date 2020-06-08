@@ -4,6 +4,7 @@ import 'package:flutter_awesome_app/components/setting/setting_component.dart';
 import 'package:flutter_awesome_app/generated/l10n.dart';
 import 'package:flutter_awesome_app/pages/demo/bloc/bloc.dart';
 import 'package:flutter_awesome_app/pages/demo/demo.dart';
+import 'package:flutter_awesome_app/pages/login/authentication/authentication.dart';
 import 'package:flutter_awesome_app/pages/root_page_control/bloc/bloc.dart';
 import 'package:flutter_awesome_app/pages/setting_on_launcher/setting_on_launcher_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +30,7 @@ class _MinePageState extends State<MinePage> {
             Text(S.of(context).language + ': ' + SettingInheritedModel.of(context).languageModel.name),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: Text(S.of(context).area + ': ' + SettingInheritedModel.of(context).areaModel.name),
+              child: Text(S.of(context).area ?? '' + ': ' + SettingInheritedModel.of(context)?.areaModel?.name ?? ''),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
@@ -51,6 +52,15 @@ class _MinePageState extends State<MinePage> {
                   );
                 },
                 child: Text('lancher demo page'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: RaisedButton(
+                onPressed: () {
+                  context.bloc<AuthenticationBloc>().add(AuthenticationLoggedOut());
+                },
+                child: Text('logout'),
               ),
             ),
           ],

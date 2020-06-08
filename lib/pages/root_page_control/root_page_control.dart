@@ -6,6 +6,10 @@ import 'package:flutter_awesome_app/components/setting/bloc/bloc.dart';
 import 'package:flutter_awesome_app/components/setting/model.dart';
 import 'package:flutter_awesome_app/config/const.dart';
 import 'package:flutter_awesome_app/config/keys.dart';
+import 'package:flutter_awesome_app/pages/launcher/launcher_page.dart';
+import 'package:flutter_awesome_app/pages/login/authentication/authentication.dart';
+import 'package:flutter_awesome_app/pages/login/page/login_page.dart';
+import 'package:flutter_awesome_app/pages/login/user_repository/user_repository.dart';
 import 'package:flutter_awesome_app/pages/setting_on_launcher/setting_on_launcher_page.dart';
 import 'package:flutter_awesome_app/pages/tabbars_frame.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,7 +66,15 @@ class _RootPageControlState extends State<RootPageControl> {
     if (notFirstTimeLauncher == true) {
 //    if (false) {
       //launch dashboard
-      BlocProvider.of<RootPageControlBloc>(context).add(SetRootPageEvent(page: TabBarsFrame()));
+//      BlocProvider.of<RootPageControlBloc>(context).add(SetRootPageEvent(page: TabBarsFrame()));
+      BlocProvider.of<RootPageControlBloc>(context).add(SetRootPageEvent(
+          page: BlocProvider<AuthenticationBloc>(
+        create: (context) =>
+            AuthenticationBloc(userRepository: context.repository<UserRepository>())..add(AuthenticationStarted()),
+        child: LauncherPage(
+          userRepository: context.repository<UserRepository>(),
+        ),
+      )));
     } else {
       //launch setting
       BlocProvider.of<RootPageControlBloc>(context).add(SetRootPageEvent(page: SettingOnLauncherPage()));
